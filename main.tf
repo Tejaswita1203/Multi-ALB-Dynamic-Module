@@ -1,0 +1,30 @@
+module "ALB_Dynamic_Setup" {
+  source                                 = "./Modules/Dynamic_ALB"
+  subnet                                 = []
+  sg_id                                  = []
+  tg_vpc                                 = ""
+  internal                               = false
+  enable_deletion_protection_state       = false
+  drop_invalid_header_fields_state       = false
+  preserve_host_header_state             = false
+  connection_termination_state           = false
+  idle_timeout_value                     = 60
+  enable_cross_zone_load_balancing_state = false
+  enable_http2_state                     = true
+  enable_waf_fail_open_state             = false
+  ip_add_type                            = "ipv4"
+  port                                   = 443
+  protocol                               = "HTTPS"
+  target_type                            = "ip"
+  health_check_path                      = "/"
+  health_check_port                      = 80
+  health_check_protocol                  = "HTTP"
+  health_check_timeout                   = 5
+  health_check_interval                  = 30
+  alpn_policy                            = "None"
+  ssl_policy                             = ""
+  certificate_arn                        = ""
+  Target_ids                             = []
+  ALB_Name                               = ["ALB-1", "ALB-2"]
+  Target_Group_Name                      = ["TG-1", "TG-2"]
+}
